@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeePosh — Premium Hair & Grooming Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      color: #1a1a1a;
+      background: #f0efed;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 48px;
+      background: #e8e7e4;
+      border-bottom: 0.5px solid #d4d3d0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #555;
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #1a1a1a; }
+    .btn {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 11px 26px;
+      background: #1a1a1a;
+      color: #f0efed;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover { background: #333; }
+
+    /* HERO */
+    .hero {
+      background: #e8e7e4;
+      padding: 100px 48px 96px;
+      text-align: center;
+      border-bottom: 0.5px solid #d4d3d0;
+    }
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 28px;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px;
+      font-weight: 300;
+      line-height: 1.05;
+      color: #1a1a1a;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+    h1 em { font-style: italic; color: #777; }
+    .hero-sub {
+      font-size: 13px;
+      color: #555;
+      letter-spacing: 0.06em;
+      margin-bottom: 44px;
+      font-weight: 300;
+    }
+    .hero-btn-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
+    .btn-outline {
+      background: transparent;
+      color: #1a1a1a;
+      border: 0.5px solid #1a1a1a;
+    }
+    .btn-outline:hover { background: #1a1a1a; color: #f0efed; }
+
+    /* SECTION SHARED */
+    section { padding: 80px 48px; }
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 0.5px solid #d4d3d0;
+      padding-bottom: 18px;
+      margin-bottom: 48px;
+    }
+    .section-tag {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #666;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 300;
+      color: #1a1a1a;
+    }
+
+    /* SERVICES */
+    .services { background: #f0efed; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #d4d3d0;
+      border: 0.5px solid #d4d3d0;
+    }
+    .service-card {
+      background: #eae9e6;
+      padding: 32px 26px;
+      transition: background 0.2s;
+    }
+    .service-card:hover { background: #e2e1de; }
+    .service-num { font-family: 'Cormorant Garamond', serif; font-size: 12px; color: #999; margin-bottom: 12px; }
+    .service-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: #1a1a1a; margin-bottom: 8px; }
+    .service-desc { font-size: 12px; color: #666; line-height: 1.7; }
+
+    /* PRICE LIST */
+    .price-list { background: #e8e7e4; }
+    .price-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .tab-btn {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      background: transparent;
+      border: 0.5px solid #c8c7c4;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 400;
+    }
+    .tab-btn:hover { border-color: #1a1a1a; color: #1a1a1a; }
+    .tab-btn.active { background: #1a1a1a; color: #f0efed; border-color: #1a1a1a; }
+    .price-panel { display: none; }
+    .price-panel.active { display: block; }
+    .price-category {
+      margin-bottom: 32px;
+    }
+    .price-category-title {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 0.5px solid #d4d3d0;
+    }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 0.5px solid #dddcd9;
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price-item-name { font-size: 13px; color: #333; font-weight: 300; }
+    .price-item-name small { font-size: 11px; color: #777; margin-left: 6px; }
+    .price-amount { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: #1a1a1a; font-weight: 400; white-space: nowrap; }
+    .price-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 40px;
+    }
+    .package-card {
+      background: #e2e1de;
+      border: 0.5px solid #d4d3d0;
+      padding: 28px;
+      margin-bottom: 16px;
+    }
+    .pkg-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 14px;
+    }
+    .pkg-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: #1a1a1a; }
+    .pkg-price { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #1a1a1a; font-weight: 300; }
+    .pkg-price span { font-size: 12px; font-family: 'Jost', sans-serif; color: #777; margin-left: 2px; }
+    .pkg-items { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+    .pkg-items li {
+      font-size: 11px;
+      color: #555;
+      background: #eae9e6;
+      padding: 4px 10px;
+      border: 0.5px solid #d4d3d0;
+      font-weight: 300;
+    }
+    .packages-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* REVIEWS */
+    .reviews { background: #f0efed; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #d4d3d0; border: 0.5px solid #d4d3d0; }
+    .review-card { background: #eae9e6; padding: 32px 26px; }
+    .stars { font-size: 12px; color: #c8a96e; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text { font-size: 13px; color: #444; line-height: 1.8; margin-bottom: 18px; font-style: italic; font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+    .review-author { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #666; }
+
+    /* CONTACT */
+    .contact { background: #1a1a1a; padding: 80px 48px; }
+    .contact .section-top { border-bottom-color: #333; }
+    .contact .section-tag { color: #888; }
+    .contact h2 { color: #f0efed; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .contact-block-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 10px;
+    }
+    .contact-block-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: #e0dedd;
+      line-height: 1.5;
+    }
+    .contact-block-val a { color: #e0dedd; text-decoration: none; }
+    .contact-block-val a:hover { color: #fff; }
+    .contact-block { margin-bottom: 36px; }
+    .contact-book-side { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 18px; }
+    .contact-book-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: #f0efed; line-height: 1.2; }
+    .contact-book-title em { font-style: italic; color: #666; }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.5px solid #2a2a2a;
+    }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: #555; }
+    .footer-copy { font-size: 11px; color: #444; }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,10,10,0.7);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #eae9e6;
+      width: 100%;
+      max-width: 600px;
+      padding: 0;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 0.5px solid #d4d3d0;
+    }
+    .modal-close { position: absolute; top: 12px; right: 16px; background: #eae9e6; border: 0.5px solid #d4d3d0; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; color: #666; z-index: 10; }
+    .modal-close:hover { color: #1a1a1a; }
+    .modal-eyebrow { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #aaa; margin-bottom: 8px; }
+    .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: #1a1a1a; margin-bottom: 28px; }
+    .form-group { margin-bottom: 18px; }
+    .form-label { display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #aaa; margin-bottom: 7px; }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; padding: 9px 0; border: none; border-bottom: 0.5px solid #c8c7c4;
+      background: transparent; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300;
+      color: #1a1a1a; outline: none; transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-bottom-color: #1a1a1a; }
+    .form-textarea { resize: none; height: 64px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-submit {
+      width: 100%; margin-top: 24px; padding: 14px;
+      background: #1a1a1a; color: #f0efed; border: none;
+      font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+    }
+    .form-submit:hover { background: #333; }
+    .success-section { display: none; text-align: center; padding: 16px 0; }
+    .success-icon { font-size: 26px; margin-bottom: 14px; }
+    .success-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: #1a1a1a; margin-bottom: 8px; }
+    .success-text { font-size: 12px; color: #888; line-height: 1.7; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 64px 24px 60px; }
+      h1 { font-size: 44px; }
+      section { padding: 56px 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .price-grid { grid-template-columns: 1fr; gap: 0; }
+      .packages-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .contact { padding: 56px 20px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 0; }
+      .contact-book-side { margin-top: 40px; }
+      footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+      .modal { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .section-top { flex-direction: column; align-items: flex-start; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">LeePosh</div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#prices">Price List</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="btn" onclick="openModal()">Book Now</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Premium Hair &amp; Grooming Studio · Quetta</div>
+  <h1>Where <em>style</em><br>meets precision.</h1>
+  <p class="hero-sub">House No. 230-C, Samungli Housing Scheme, Panchfooti, Quetta</p>
+  <div class="hero-btn-wrap">
+    <button class="btn" onclick="openModal()">Book an Appointment</button>
+    <a href="#services" class="btn btn-outline">Explore Services</a>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-top">
+    <div class="section-tag">What We Offer</div>
+    <h2>Our Services</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-name">Hair Cuts &amp; Styling</div>
+      <div class="service-desc">Simple cuts, fades, head shaves, blow-dries, and fiber styling crafted to suit your look.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-name">Hair Treatments</div>
+      <div class="service-desc">Polishing, keratin masks, botox smoothing, and premium Bremod &amp; coffee keratin treatments.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-name">Colour &amp; Texture</div>
+      <div class="service-desc">Global colour, highlights, lowlights, glossing, and beard colouring using L'Oréal, Keune &amp; Garnier.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-name">Facials &amp; Cleansing</div>
+      <div class="service-desc">Whitening hydra facials, Janssen, The Body Shop, and Jessica facials plus full cleansing rituals.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-name">Beard &amp; Shave</div>
+      <div class="service-desc">Wet shave packages, classic trims, and precision beard grooming for the refined gentleman.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-name">Hands, Feet &amp; Body</div>
+      <div class="service-desc">Paraffin and whitening manicure/pedicure, body waxing, massage services, and threading.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE LIST -->
+<section class="price-list" id="prices">
+  <div class="section-top">
+    <div class="section-tag">Transparent Pricing</div>
+    <h2>Price List</h2>
+  </div>
+
+  <div class="price-tabs">
+    <button class="tab-btn active" onclick="showTab('cuts')">Cuts &amp; Styling</button>
+    <button class="tab-btn" onclick="showTab('treatments')">Hair Treatments</button>
+    <button class="tab-btn" onclick="showTab('colour')">Colour &amp; Texture</button>
+    <button class="tab-btn" onclick="showTab('face')">Face &amp; Skin</button>
+    <button class="tab-btn" onclick="showTab('beard')">Beard &amp; Shave</button>
+    <button class="tab-btn" onclick="showTab('body')">Hands, Feet &amp; Body</button>
+    <button class="tab-btn" onclick="showTab('packages')">Packages</button>
+  </div>
+
+  <!-- Cuts & Styling -->
+  <div class="price-panel active" id="tab-cuts">
+    <div class="price-grid">
+      <div>
+        <div class="price-row"><span class="price-item-name">Simple Haircut</span><span class="price-amount">PKR 1,000</span></div>
+        <div class="price-row"><span class="price-item-name">Fade Haircut</span><span class="price-amount">PKR 1,500</span></div>
+        <div class="price-row"><span class="price-item-name">Head Shave</span><span class="price-amount">PKR 800</span></div>
+      </div>
+      <div>
+        <div class="price-row"><span class="price-item-name">Styling</span><span class="price-amount">PKR 500</span></div>
+        <div class="price-row"><span class="price-item-name">Fiber Styling</span><span class="price-amount">PKR 1,500</span></div>
+        <div class="price-row"><span class="price-item-name">Hair Wash</span><span class="price-amount">PKR 200</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hair Treatments -->
+  <div class="price-panel" id="tab-treatments">
+    <div class="price-category">
+      <div class="price-category-title">Hair Polishing</div>
+      <div class="price-grid">
+        <div>
+          <div class="price-row"><span class="price-item-name">Hair Polishing <small>Level 1</small></span><span class="price-amount">PKR 3,000</span></div>
+          <div class="price-row"><span class="price-item-name">Hair Polishing <small>Level 2</small></span><span class="price-amount">PKR 4,000</span></div>
+        </div>
+        <div>
+          <div class="price-row"><span class="price-item-name">Simple Keratin Mask <small>Level 1</small></span><span class="price-amount">PKR 4,000</span></div>
+          <div class="price-row"><span class="price-item-name">Simple Keratin Mask <small>Level 2</small></span><span class="price-amount">PKR 5,000</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="price-category">
+      <div class="price-category-title">Smoothing &amp; Botox</div>
+      <div class="price-grid">
+        <div>
+          <div class="price-row"><span class="price-item-name">Hair Smoothing Botox <small>Level 1</small></span><span class="price-amount">PKR 5,000</span></div>
+          <div class="price-row"><span class="price-item-name">Hair Smoothing Botox <small>Level 2</small></span><span class="price-amount">PKR 6,000</span></div>
+        </div>
+        <div>
+          <div class="price-row"><span class="price-item-name">Frizz Free Bremod <small>Level 1</small></span><span class="price-amount">PKR 6,000</span></div>
+          <div class="price-row"><span class="price-item-name">Frizz Free Bremod <small>Level 2</small></span><span class="price-amount">PKR 7,000</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="price-category">
+      <div class="price-category-title">Coffee Premium Keratin</div>
+      <div class="price-grid">
+        <div>
+          <div class="price-row"><span class="price-item-name">Level 1</span><span class="price-amount">PKR 10,000</span></div>
+          <div class="price-row"><span class="price-item-name">Level 2</span><span class="price-amount">PKR 12,500</span></div>
+        </div>
+        <div>
+          <div class="price-row"><span class="price-item-name">Level 3</span><span class="price-amount">PKR 16,000</span></div>
+          <div class="price-row"><span class="price-item-name">Level 4</span><span class="price-amount">PKR 22,000</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="price-category">
+      <div class="price-category-title">Global Classic Keratin</div>
+      <div class="price-grid">
+        <div>
+          <div class="price-row"><span class="price-item-name">Level 1</span><span class="price-amount">PKR 8,000</span></div>
+          <div class="price-row"><span class="price-item-name">Level 2</span><span class="price-amount">PKR 10,000</span></div>
+        </div>
+        <div>
+          <div class="price-row"><span class="price-item-name">Level 3</span><span class="price-amount">PKR 14,000</span></div>
+          <div class="price-row"><span class="price-item-name">Level 4</span><span class="price-amount">PKR 18,000</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Colour & Texture -->
+  <div class="price-panel" id="tab-colour">
+    <div class="price-grid">
+      <div>
+        <div class="price-row"><span class="price-item-name">L'Oréal</span><span class="price-amount">PKR 2,500</span></div>
+        <div class="price-row"><span class="price-item-name">Keune</span><span class="price-amount">PKR 2,000</span></div>
+        <div class="price-row"><span class="price-item-name">Garnier</span><span class="price-amount">PKR 1,600</span></div>
+        <div class="price-row"><span class="price-item-name">Just For Men</span><span class="price-amount">PKR 2,200</span></div>
+        <div class="price-row"><span class="price-item-name">Highlights</span><span class="price-amount">PKR 10,000</span></div>
+        <div class="price-row"><span class="price-item-name">Lowlights</span><span class="price-amount">PKR 8,000</span></div>
+      </div>
+      <div>
+        <div class="price-row"><span class="price-item-name">Glossing</span><span class="price-amount">PKR 2,000</span></div>
+        <div class="price-row"><span class="price-item-name">Garnier Beard Colour</span><span class="price-amount">PKR 800</span></div>
+        <div class="price-row"><span class="price-item-name">Keune Beard Colour</span><span class="price-amount">PKR 1,500</span></div>
+        <div class="price-row"><span class="price-item-name">L'Oréal Beard Colour</span><span class="price-amount">PKR 1,500</span></div>
+        <div class="price-row"><span class="price-item-name">Colour Application</span><span class="price-amount">PKR 1,000</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Face & Skin -->
+  <div class="price-panel" id="tab-face">
+    <div class="price-category">
+      <div class="price-category-title">Facials</div>
+      <div class="price-grid">
+        <div>
+          <div class="price-row"><span class="price-item-name">Whitening Hydra Facial</span><span class="price-amount">PKR 8,000</span></div>
+          <div class="price-row"><span class="price-item-name">Janssen Facial</span><span class="price-amount">PKR 6,500</span></div>
+          <div class="price-row"><span class="price-item-name">Hydra Facial</span><span class="price-amount">PKR 6,000</span></div>
+        </div>
+        <div>
+          <div class="price-row"><span class="price-item-name">The Body Shop Facial</span><span class="price-amount">PKR 6,000</span></div>
+          <div class="price-row"><span class="price-item-name">Jessica Facial</span><span class="price-amount">PKR 4,500</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="price-category">
+      <div class="price-category-title">Cleansing</div>
+      <div class="price-grid">
+        <div>
+          <div class="price-row"><span class="price-item-name">The Body Shop Cleansing</span><span class="price-amount">PKR 3,000</span></div>
+          <div class="price-row"><span class="price-item-name">Janssen Cleansing</span><span class="price-amount">PKR 3,500</span></div>
+          <div class="price-row"><span class="price-item-name">Skin Polish</span><span class="price-amount">PKR 2,500</span></div>
+        </div>
+        <div>
+          <div class="price-row"><span class="price-item-name">Full Makeover</span><span class="price-amount">PKR 4,000</span></div>
+          <div class="price-row"><span class="price-item-name">Simple Touch</span><span class="price-amount">PKR 2,000</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="price-category">
+      <div class="price-category-title">Face Masks</div>
+      <div class="price-grid">
+        <div>
+          <div class="price-row"><span class="price-item-name">LED Mask</span><span class="price-amount">PKR 3,000</span></div>
+          <div class="price-row"><span class="price-item-name">Golden Mask</span><span class="price-amount">PKR 500</span></div>
+          <div class="price-row"><span class="price-item-name">Black Mask</span><span class="price-amount">PKR 500</span></div>
+        </div>
+        <div>
+          <div class="price-row"><span class="price-item-name">Mud Mask</span><span class="price-amount">PKR 500</span></div>
+          <div class="price-row"><span class="price-item-name">Nose Strip</span><span class="price-amount">PKR 500</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="price-category">
+      <div class="price-category-title">Face Waxing</div>
+      <div class="price-grid">
+        <div>
+          <div class="price-row"><span class="price-item-name">Full Face Wax + Cooling Mask</span><span class="price-amount">PKR 1,500</span></div>
+          <div class="price-row"><span class="price-item-name">Full Face Wax</span><span class="price-amount">PKR 1,200</span></div>
+          <div class="price-row"><span class="price-item-name">Cheek Wax</span><span class="price-amount">PKR 600</span></div>
+          <div class="price-row"><span class="price-item-name">Forehead Wax</span><span class="price-amount">PKR 600</span></div>
+        </div>
+        <div>
+          <div class="price-row"><span class="price-item-name">Nose Wax</span><span class="price-amount">PKR 500</span></div>
+          <div class="price-row"><span class="price-item-name">Ear Wax</span><span class="price-amount">PKR 500</span></div>
+          <div class="price-row"><span class="price-item-name">Neck (one side)</span><span class="price-amount">PKR 600</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="price-category">
+      <div class="price-category-title">Threading</div>
+      <div class="price-grid">
+        <div>
+          <div class="price-row"><span class="price-item-name">Full Face Threading</span><span class="price-amount">PKR 700</span></div>
+        </div>
+        <div>
+          <div class="price-row"><span class="price-item-name">Eyebrows Threading</span><span class="price-amount">PKR 500</span></div>
+          <div class="price-row"><span class="price-item-name">Cheek Threading</span><span class="price-amount">PKR 500</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Beard & Shave -->
+  <div class="price-panel" id="tab-beard">
+    <div class="price-grid">
+      <div>
+        <div class="price-row"><span class="price-item-name">Wet Shave Package</span><span class="price-amount">PKR 1,000</span></div>
+        <div class="price-row"><span class="price-item-name">Wet Shave</span><span class="price-amount">PKR 500</span></div>
+        <div class="price-row"><span class="price-item-name">Simple Trimming</span><span class="price-amount">PKR 400</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hands, Feet & Body -->
+  <div class="price-panel" id="tab-body">
+    <div class="price-category">
+      <div class="price-category-title">Hands &amp; Feet</div>
+      <div class="price-grid">
+        <div>
+          <div class="price-row"><span class="price-item-name">Paraffin Manicure</span><span class="price-amount">PKR 3,000</span></div>
+          <div class="price-row"><span class="price-item-name">Paraffin Pedicure</span><span class="price-amount">PKR 3,000</span></div>
+          <div class="price-row"><span class="price-item-name">Whitening Manicure</span><span class="price-amount">PKR 2,500</span></div>
+          <div class="price-row"><span class="price-item-name">Whitening Pedicure</span><span class="price-amount">PKR 2,500</span></div>
+          <div class="price-row"><span class="price-item-name">Simple Manicure</span><span class="price-amount">PKR 2,000</span></div>
+        </div>
+        <div>
+          <div class="price-row"><span class="price-item-name">Simple Pedicure</span><span class="price-amount">PKR 2,000</span></div>
+          <div class="price-row"><span class="price-item-name">Nails Cutting / Filing</span><span class="price-amount">PKR 500</span></div>
+          <div class="price-row"><span class="price-item-name">Cuticles Removing</span><span class="price-amount">PKR 500</span></div>
+          <div class="price-row"><span class="price-item-name">Nail Buffing</span><span class="price-amount">PKR 500</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="price-category">
+      <div class="price-category-title">Body Waxing</div>
+      <div class="price-grid">
+        <div>
+          <div class="price-row"><span class="price-item-name">Full Arm Wax (one side)</span><span class="price-amount">PKR 1,600</span></div>
+          <div class="price-row"><span class="price-item-name">Full Legs Wax (one side)</span><span class="price-amount">PKR 1,600</span></div>
+          <div class="price-row"><span class="price-item-name">Half Arm</span><span class="price-amount">PKR 1,000</span></div>
+          <div class="price-row"><span class="price-item-name">Half Leg</span><span class="price-amount">PKR 1,000</span></div>
+        </div>
+        <div>
+          <div class="price-row"><span class="price-item-name">Chest Wax</span><span class="price-amount">PKR 2,000</span></div>
+          <div class="price-row"><span class="price-item-name">Back Wax</span><span class="price-amount">PKR 3,000</span></div>
+          <div class="price-row"><span class="price-item-name">Stomach</span><span class="price-amount">PKR 2,000</span></div>
+          <div class="price-row"><span class="price-item-name">Underarm Wax</span><span class="price-amount">PKR 1,200</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="price-category">
+      <div class="price-category-title">Massage Services</div>
+      <div class="price-grid">
+        <div>
+          <div class="price-row"><span class="price-item-name">Full Body Massage</span><span class="price-amount">PKR 5,000</span></div>
+          <div class="price-row"><span class="price-item-name">Full Back Massage</span><span class="price-amount">PKR 2,000</span></div>
+          <div class="price-row"><span class="price-item-name">Full Leg Massage</span><span class="price-amount">PKR 2,000</span></div>
+        </div>
+        <div>
+          <div class="price-row"><span class="price-item-name">Foot Massage</span><span class="price-amount">PKR 600</span></div>
+          <div class="price-row"><span class="price-item-name">Shoulder Massage</span><span class="price-amount">PKR 500</span></div>
+          <div class="price-row"><span class="price-item-name">Head Massage</span><span class="price-amount">PKR 500</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packages -->
+  <div class="price-panel" id="tab-packages">
+    <div class="price-category-title" style="margin-bottom:20px;">Grooming Packages</div>
+    <div class="packages-grid">
+      <div class="package-card">
+        <div class="pkg-header">
+          <div class="pkg-name">Two Days Package</div>
+          <div class="pkg-price">PKR 13,000</div>
+        </div>
+        <ul class="pkg-items">
+          <li>Haircut</li><li>Wet Shave</li><li>Styling (both days)</li><li>Jessica Facial</li><li>1-Day Makeover</li><li>Golden Mask</li><li>Simple Mani/Pedi</li><li>Waxing/Threading</li>
+        </ul>
+      </div>
+      <div class="package-card">
+        <div class="pkg-header">
+          <div class="pkg-name">Three Days Package</div>
+          <div class="pkg-price">PKR 18,000</div>
+        </div>
+        <ul class="pkg-items">
+          <li>Haircut</li><li>Wet Shave</li><li>Simple Trimming</li><li>Whitening Mani/Pedi</li><li>The Body Shop Facial</li><li>Waxing/Threading</li><li>Styling (3 days)</li><li>1-Day Makeover</li><li>1-Day Simple Touch</li>
+        </ul>
+      </div>
+      <div class="package-card">
+        <div class="pkg-header">
+          <div class="pkg-name">Four Days Package</div>
+          <div class="pkg-price">PKR 23,000</div>
+        </div>
+        <ul class="pkg-items">
+          <li>Haircut</li><li>Wet Shave</li><li>Simple Trimming</li><li>Whitening Mani/Pedi</li><li>Janssen Facial</li><li>Makeover (2 days)</li><li>Waxing/Threading</li><li>Styling (4 days)</li><li>LED Steamer / Face Mask</li><li>Black/Whitehead Removing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="price-category-title" style="margin-top:40px;margin-bottom:20px;">Walima Deals</div>
+    <div class="packages-grid">
+      <div class="package-card">
+        <div class="pkg-header">
+          <div class="pkg-name">Walima Deal 1</div>
+          <div class="pkg-price">PKR 8,300</div>
+        </div>
+        <ul class="pkg-items">
+          <li>Haircut</li><li>Wet Shave</li><li>Simple Mani/Pedi</li><li>Swiss Cleansing</li><li>Nose Wax</li><li>Ear Wax</li><li>1-Day Styling</li><li>Simple Touch</li>
+        </ul>
+      </div>
+      <div class="package-card">
+        <div class="pkg-header">
+          <div class="pkg-name">Walima Deal 2</div>
+          <div class="pkg-price">PKR 12,000</div>
+        </div>
+        <ul class="pkg-items">
+          <li>Haircut</li><li>Beard</li><li>Simple Styling</li><li>Trimming Whitening</li><li>Mani/Pedi Jessica</li><li>Facial Golden Mask</li><li>Waxing/Threading</li><li>1-Day Styling</li>
+        </ul>
+      </div>
+      <div class="package-card">
+        <div class="pkg-header">
+          <div class="pkg-name">Walima Deal 3</div>
+          <div class="pkg-price">PKR 19,000</div>
+        </div>
+        <ul class="pkg-items">
+          <li>Haircut</li><li>Wet Shave</li><li>Signature Trimming</li><li>Janssen Facial</li><li>LED Mask</li><li>Black/Whitehead Removing</li><li>Waxing/Threading</li><li>Full Makeover</li><li>1-Day Styling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="section-top">
+    <div class="section-tag">What Clients Say</div>
+    <h2>Reviews</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">"Best haircut I've had in Quetta. The fade was clean, the service was polished, and the atmosphere felt genuinely premium."</div>
+      <div class="review-author">— Ahmed R.</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">"Came in for the Janssen facial and left feeling completely refreshed. The staff really knows what they're doing."</div>
+      <div class="review-author">— Sana M.</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">"Used the Walima package for my wedding and it was worth every rupee. Looked and felt my best on the big day."</div>
+      <div class="review-author">— Bilal K.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-top">
+    <div class="section-tag">Get In Touch</div>
+    <h2>Contact Us</h2>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-block">
+        <div class="contact-block-label">Phone</div>
+        <div class="contact-block-val"><a href="tel:0812503749">081 250 3749</a></div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-block-label">Instagram</div>
+        <div class="contact-block-val"><a href="https://www.instagram.com/leeposh.salon?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">@leeposh.salon</a></div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-block-label">Address</div>
+        <div class="contact-block-val">House No. 230-C, Samungli Housing Scheme<br>Panchfooti, Quetta, Pakistan 87300</div>
+      </div>
+    </div>
+    <div class="contact-book-side">
+      <div class="contact-book-title">Ready for your<br><em>next appointment?</em></div>
+      <button class="btn btn-light" onclick="openModal()" style="background:#f0efed;color:#1a1a1a;font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;padding:13px 30px;border:none;cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Book an Appointment</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">LeePosh</div>
+  <div class="footer-copy">© 2025 LeePosh · Premium Hair &amp; Grooming Studio · Quetta</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/balochmir20187/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=eae9e6&primary_color=1a1a1a" style="min-width:320px;height:700px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  </div>
+</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.price-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+  function openModal() {
+    document.getElementById('modal').classList.add('open');
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+  }
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('modal')) closeModal();
+  }
+</script>
+
+</body>
+</html>
